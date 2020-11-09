@@ -1,13 +1,13 @@
 import React from 'react';
 import Posts from './posts/Posts';
 import classes from './Profile.module.css';
+import ProfileInfo from './profileInfo/ProfileInfo';
 
 const Profile = () => {
     return (
         <div>
-            <div>
-                avatar + description
-            </div>
+            <ProfileInfo />
+            
             <Posts></Posts>
         </div>
     );

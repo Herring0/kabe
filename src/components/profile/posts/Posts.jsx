@@ -3,19 +3,30 @@ import Post from './post/Post';
 import css from './Posts.module.css';
 
 const Posts = () => {
+
+    let postsData = [
+        { id: 1, post: "hi, mate" },
+        { id: 2, post: "hello world" },
+        { id: 3, post: "gj man" },
+        { id: 4, post: "first" },
+        { id: 5, post: "Andrew" }
+    ];
+
     return (
-        <div>
-            my posts
+        <div className={css.postsBlock}>
+            <h3>My posts</h3>
+            
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
             <div className={css.posts}>
                 posts
-                <Post message='hi, mate'></Post>
-                <Post message='hello world'></Post>
-                <Post message='gj man'></Post>
-                <Post message='first'></Post>
+                <Post message={postsData[0].post}></Post>
             </div>
         </div>
     );
