@@ -8,16 +8,25 @@ const Posts = (props) => {
         props.postsData.map(postData => <Post message={postData.post}/>)
     ]
 
+    let newPostArea = React.createRef();
+
+    let addPost = () => {
+        let newPostText = newPostArea.current.value;
+        alert(newPostText);
+    }
+
     return (
         <div className={css.postsBlock}>
             <h3>My posts</h3>
 
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostArea}></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>
+                        Add post
+                    </button>
                 </div>
             </div>
             <div className={css.posts}>

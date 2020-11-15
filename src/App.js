@@ -11,7 +11,7 @@ const App = (props) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>y
+                <Navbar/>
                 <div className="app-wrapper-content">
                     <Route path="/dialogs" render={() => <Dialogs
                         dialogsState={props.appState.messagesPage}/>}/>
