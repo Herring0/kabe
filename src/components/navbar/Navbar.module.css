@@ -1,18 +1,22 @@
 .nav {
     grid-area: nav;
-    background-color: burlywood;
+    background-color: var(--color-first);
+}
+
+.item {
+    padding: 3px 10px 3px 10px;
 }
 
 .item a {
-    color: white;
+    color: var(--font-color);
     text-decoration: none;
-    font-size: 15pt;
+    font-size: 14pt;
 }
 
 .item a:hover {
-    color: #ebebeb;
+    color: var(--active);
 }
 
 .item a.active {
-    color: chartreuse;
+    color: var(--active);
 }

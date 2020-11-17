@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './Navbar.module.css';
+import '../../App.css';
 
 const Navbar = () => {
     return (
-        <nav className={css.nav}>
+        <nav className={`${css.nav} wrapper`}>
             <div className={css.item}>
                 <NavLink to="/profile" activeClassName={css.active}>Profile</NavLink>
             </div>

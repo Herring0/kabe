@@ -7,9 +7,7 @@ const Dialog = (props) => {
     let url = "/dialogs/" + props.id;
 
     return (
-        <div className={css.dialog + ' ' + css.active}>
-            <NavLink to={url}>{props.name}</NavLink>
-        </div>
+        <NavLink className={css.link} to={url} activeClassName={css.active}>{props.name}</NavLink>
     );
 }
 

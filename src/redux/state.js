@@ -17,9 +17,9 @@ let state = {
             { id: 5, name: "Andrew" }
         ],
         messagesData: [
-            { id: 1, message: "Hi" },
-            { id: 2, message: "How are you?" },
-            { id: 3, message: "Yo" }
+            { id: 1, message: "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post", from: 1},
+            { id: 2, message: "yes, really very awesome car i see the features of this car in the official website of #Mercedes-Benz and really impressed :-)", from: -1},
+            { id: 3, message: "i like lexus cars, lexus cars are most beautiful with the awesome features, but this car is really outstanding than lexus", from: 1 }
         ]
     }
 }
