@@ -12,7 +12,7 @@ const Posts = (props) => {
 
     let addPost = () => {
         let newPostText = newPostArea.current.value;
-        alert(newPostText);
+        props.addPost(newPostText);
     }
 
     return (

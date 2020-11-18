@@ -24,7 +24,7 @@ code {
   --font-color: #8c8b8b;
   --border-color: #ede9e9;
   --active: #088dcd;
-  --background-active: #088DCD10;
+  --background-active: rgba(8, 141, 205, 0.06);
 }
 
 
