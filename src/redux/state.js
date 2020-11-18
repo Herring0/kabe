@@ -1,3 +1,5 @@
+import {rerenderApp} from "../RenderHandler";
+
 let state = {
     profilePage: {
         postsData: [
@@ -30,6 +32,7 @@ export let addPost = (postMessage) => {
         post: postMessage
     }
     state.profilePage.postsData.push(newPost)
+    rerenderApp(state)
 }
 
 export default state;

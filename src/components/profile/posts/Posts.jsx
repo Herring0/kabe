@@ -13,12 +13,12 @@ const Posts = (props) => {
     let addPost = () => {
         let newPostText = newPostArea.current.value;
         props.addPost(newPostText);
+        newPostArea.current.value = ''
     }
 
     return (
         <div className={css.postsBlock}>
             <h3>My posts</h3>
-
             <div>
                 <div>
                     <textarea ref={newPostArea}/>
