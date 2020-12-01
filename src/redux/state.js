@@ -1,6 +1,5 @@
-import {rerenderApp} from "../RenderHandler";
-
-let state = {
+let store = {
+    _state: {
     profilePage: {
         postsData: [
             { id: 1, post: "Curabitur Lonely Cat Enjoying in Summer #mypage ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc" },
@@ -8,7 +7,8 @@ let state = {
             { id: 3, post: "Amazon #amazonee the most beatuiful lamp available in america and the saudia arabia, you can purchase for the home and shop for increase the room beauty" },
             { id: 4, post: "Curabitur #amazon_shop ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc" },
             { id: 5, post: "It's hard to remember shortcuts when there are a large number of options. A more efficient way is to take advantage of editor's Insert Live Template shortcut." }
-        ]
+        ],
+        newPostText: ""
     },
     messagesPage: {
         dialogsData: [
@@ -24,15 +24,40 @@ let state = {
             { id: 3, message: "i like lexus cars, lexus cars are most beautiful with the awesome features, but this car is really outstanding than lexus", from: 1 }
         ]
     }
-}
+},
+    _callSubscriber() {
+        console.log('state changed')
+    },
 
-export let addPost = (postMessage) => {
-    let newPost = {
-        id: 5,
-        post: postMessage
+    getState() {
+        return this._state;
+    },
+    _addPost() {
+        let newPost = {
+            id: 5,
+            post: this._state.profilePage.newPostText
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state)
+    },
+    _updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber(this._state)
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            this._addPost();
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._updateNewPostText(action.newText)
+        }
     }
-    state.profilePage.postsData.push(newPost)
-    rerenderApp(state)
 }
 
-export default state;
+
+
+export default store;
