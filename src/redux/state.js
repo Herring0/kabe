@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
+const SEND_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE_TEXT'
+
 let store = {
     _state: {
     profilePage: {
@@ -22,16 +28,21 @@ let store = {
             { id: 1, message: "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post", from: 1},
             { id: 2, message: "yes, really very awesome car i see the features of this car in the official website of #Mercedes-Benz and really impressed :-)", from: -1},
             { id: 3, message: "i like lexus cars, lexus cars are most beautiful with the awesome features, but this car is really outstanding than lexus", from: 1 }
-        ]
+        ],
+        newMessageText: ""
     }
 },
     _callSubscriber() {
         console.log('state changed')
     },
+    subscribe(observer) {
+        this._callSubscriber = observer
+    },
 
     getState() {
         return this._state;
     },
+
     _addPost() {
         let newPost = {
             id: 5,
@@ -45,19 +56,47 @@ let store = {
         this._state.profilePage.newPostText = newText
         this._callSubscriber(this._state)
     },
-    subscribe(observer) {
-        this._callSubscriber = observer
+
+    _addMessage() {
+        let newMessage = {
+            id: 4,
+            message: this._state.messagesPage.newMessageText,
+            from: -1
+        }
+        this._state.messagesPage.messagesData.push(newMessage)
+        this._state.messagesPage.newMessageText = '';
+        this._callSubscriber(this._state)
+    },
+    _updateNewMessageText(newText) {
+        this._state.messagesPage.newMessageText = newText
+        this._callSubscriber(this._state)
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             this._addPost();
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._updateNewPostText(action.newText)
+        } else if (action.type === SEND_MESSAGE) {
+         this._addMessage();
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._updateNewMessageText(action.newText)
         }
     }
 }
 
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const onPostChangeActionCreator = (newText) =>
+    ({
+        type: UPDATE_NEW_POST_TEXT,
+        newText: newText
+    })
 
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
+export const onMessageChangeActionCreator = (newText) =>
+    ({
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newText: newText
+    })
 
-export default store;
+export default store
