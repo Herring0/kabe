@@ -1,0 +1,31 @@
+.friend_wrapper a {
+    color: var(--font-color);
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+.friend_wrapper a:hover {
+    color: var(--active);
+}
+
+.friend_wrapper a.active {
+    color: var(--active);
+}
+
+.title {
+    color: var(--font-color);
+    font-size: 16pt;
+    padding: 20px 0px 0px 0px;
+}
+
+.friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend img {
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+}

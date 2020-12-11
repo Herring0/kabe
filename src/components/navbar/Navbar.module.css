@@ -1,10 +1,11 @@
 .nav {
     grid-area: nav;
     background-color: var(--color-first);
+    padding: 10px;
 }
 
 .item {
-    padding: 3px 10px 3px 10px;
+    padding: 3px 0px 3px 0px;
 }
 
 .item a {
@@ -20,3 +21,20 @@
 .item a.active {
     color: var(--active);
 }
+
+.friends_block {
+    margin-top: 20px;
+}
+
+.friends_block .title {
+    color: var(--font-color);
+    font-size: 16pt;
+}
+
+.friends {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
